@@ -5,242 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI Creator | Portfolio</title>
 
-<style>
-/* ===== RESET ===== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', sans-serif;
-}
-
-body {
-  background: linear-gradient(135deg, #0f172a, #1e293b);
-  color: white;
-  scroll-behavior: smooth;
-}
-
-/* ===== NAVIGATION ===== */
-nav {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  padding: 20px 8%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  backdrop-filter: blur(10px);
-  background: rgba(15, 23, 42, 0.7);
-  z-index: 1000;
-}
-
-.nav-left,
-.nav-center,
-.nav-right {
-  flex: 1;
-}
-
-.nav-center {
-  text-align: center;
-}
-
-.nav-right {
-  display: flex;
-  justify-content: flex-end;
-  list-style: none;
-  gap: 25px;
-}
-
-.name {
-  font-weight: 600;
-  letter-spacing: 2px;
-  font-size: 36px;
-  color: #38bdf8;
-}
-
-nav h1 {
-  font-weight: 600;
-  letter-spacing: 1px;
-}
-
-nav ul {
-  display: flex;
-  list-style: none;
-  gap: 25px;
-}
-
-nav a {
-  text-decoration: none;
-  color: white;
-  font-size: 14px;
-  transition: 0.3s;
-}
-
-nav a:hover {
-  color: #38bdf8;
-}
-
-/* ===== HERO ===== */
-.hero {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 0 10%;
-}
-
-.hero h2 {
-  font-size: 48px;
-  margin-bottom: 20px;
-}
-
-.hero span {
-  color: #38bdf8;
-}
-
-.hero p {
-  max-width: 600px;
-  margin: auto;
-  opacity: 0.8;
-}
-
-.btn {
-  display: inline-block;
-  margin-top: 30px;
-  padding: 12px 28px;
-  background: #38bdf8;
-  border-radius: 30px;
-  color: #0f172a;
-  font-weight: bold;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-.btn:hover {
-  background: white;
-}
-
-/* ===== SECTIONS ===== */
-section {
-  padding: 100px 8%;
-}
-
-.section-title {
-  text-align: center;
-  margin-bottom: 60px;
-  font-size: 32px;
-}
-
-/* ===== SERVICES ===== */
-.services {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-}
-
-.card {
-  background: rgba(255,255,255,0.05);
-  padding: 30px;
-  border-radius: 20px;
-  backdrop-filter: blur(8px);
-  transition: 0.3s;
-}
-
-.card:hover {
-  transform: translateY(-10px);
-  background: rgba(56,189,248,0.1);
-}
-
-/* ===== PORTFOLIO ===== */
-.filter-buttons {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.filter-buttons button {
-  margin: 5px;
-  padding: 8px 18px;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  background: #1e293b;
-  color: white;
-  transition: 0.3s;
-}
-
-.filter-buttons button.active,
-.filter-buttons button:hover {
-  background: #38bdf8;
-  color: #0f172a;
-}
-
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-}
-
-.gallery-item {
-  height: 250px;              /* control card height */
-  border-radius: 15px;
-  overflow: hidden;           /* hides overflow */
-  position: relative;
-  background: #1e293b;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Make images & videos fill the card */
-.gallery-item img,
-.gallery-item video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;          /* IMPORTANT: fills without distortion */
-  display: block;
-}
-
-.gallery-item:hover {
-  transform: scale(1.05);
-  background: #38bdf8;
-  color: #0f172a;
-}
-
-/* ===== CONTACT ===== */
-form {
-  max-width: 500px;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-input, textarea {
-  padding: 12px;
-  border-radius: 10px;
-  border: none;
-  outline: none;
-}
-
-textarea {
-  resize: none;
-  height: 120px;
-}
-
-footer {
-  text-align: center;
-  padding: 30px;
-  opacity: 0.6;
-}
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 768px) {
-  .hero h2 {
-    font-size: 32px;
-  }
-}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -295,65 +60,34 @@ footer {
   <h2 class="section-title">Portfolio</h2>
 
   <div class="filter-buttons">
-    <button class="active" onclick="filterGallery('all')">All</button>
-    <button onclick="filterGallery('image')">Images</button>
-    <button onclick="filterGallery('video')">Videos</button>
+    <button class="active" onclick="filterGallery('all', event)">All</button>
+    <button onclick="filterGallery('image', event)">Images</button>
+    <button onclick="filterGallery('video', event)">Videos</button>
   </div>
 
   <div class="gallery">
-    <div class="gallery-item" data-category="image"><img src="1.jpg"></div>
+    <div class="gallery-item" data-category="image"><img src="/content/1.jpg"></div>
+
     <div class="gallery-item" data-category="video">
-      <video width="320" height="240" controls>
-        <source src="1.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-      </video></div>
-    <div class="gallery-item" data-category="image"><img src="2.jpg"></div>
+      <video controls>
+        <source src="/content/1.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div class="gallery-item" data-category="image"><img src="/content/2.jpg"></div>
+
     <div class="gallery-item" data-category="video">
-      <video width="320" height="240" controls>
-        <source src="4.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-      </video></div>
+      <video controls>
+        <source src="/content/4.mp4" type="video/mp4">
+      </video>
     </div>
   </div>
 </section>
-
-<!-- CONTACT -->
-<!-- <section id="contact">
-  <h2 class="section-title">Contact Me</h2>
-  <form onsubmit="submitForm(event)">
-    <input type="text" placeholder="Your Name" required>
-    <input type="email" placeholder="Your Email" required>
-    <textarea placeholder="Your Message" required></textarea>
-    <button type="submit" class="btn">Send Message</button>
-  </form>
-</section> -->
 
 <footer>
   © 2026 AI Creator Portfolio. All rights reserved.
 </footer>
 
-<script>
-function filterGallery(category) {
-  const items = document.querySelectorAll('.gallery-item');
-  const buttons = document.querySelectorAll('.filter-buttons button');
-
-  buttons.forEach(btn => btn.classList.remove('active'));
-  event.target.classList.add('active');
-
-  items.forEach(item => {
-    if (category === 'all' || item.dataset.category === category) {
-      item.style.display = "flex";
-    } else {
-      item.style.display = "none";
-    }
-  });
-}
-
-function submitForm(e) {
-  e.preventDefault();
-  alert("Message sent successfully!");
-}
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
