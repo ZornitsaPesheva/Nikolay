@@ -202,3 +202,41 @@ footer {
   padding: 30px;
   opacity: 0.6;
 }
+
+.uc-video{
+  max-width: 560px;
+  margin: 0 auto;
+  position: relative;
+  aspect-ratio: 9/16; /* за вертикално видео; ако е хоризонтално -> 16/9 */
+  border-radius: 18px;
+  overflow: hidden;
+  background:#000;
+}
+.uc-thumb{
+  position:absolute; inset:0; cursor:pointer;
+}
+.uc-thumb img{
+  width:100%; height:100%; object-fit:cover; display:block;
+}
+.uc-play{
+  position:absolute; left:50%; top:50%;
+  transform:translate(-50%,-50%);
+  width:72px; height:72px;
+  border:none; border-radius:50%;
+  background:rgba(0,0,0,.65);
+  backdrop-filter: blur(6px);
+}
+.uc-play:before{
+  content:"";
+  position:absolute; left:28px; top:22px;
+  border-left:22px solid #fff;
+  border-top:14px solid transparent;
+  border-bottom:14px solid transparent;
+}
+.uc-play:hover{ background:rgba(0,0,0,.85); }
+.uc-video iframe{
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  border:0;
+}
+
