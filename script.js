@@ -14,14 +14,3 @@ function filterGallery(category, event) {
   });
 }
 
-document.querySelectorAll('.uc-video').forEach(wrapper=>{
-  const id = wrapper.dataset.id;
-  wrapper.querySelector('.uc-thumb').addEventListener('click', ()=>{
-    wrapper.innerHTML = `
-      <iframe
-        src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1&controls=1"
-        allow="autoplay; encrypted-media; picture-in-picture"
-        allowfullscreen>
-      </iframe>`;
-  });
-});
