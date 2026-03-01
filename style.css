@@ -226,6 +226,57 @@ section {
   transform: scale(1.05);
 }
 
+/* ===== CONTACT ===== */
+#contact form {
+  max-width: 680px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+#contact input,
+#contact textarea {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.06);
+  color: white;
+  padding: 14px 16px;
+  border-radius: 12px;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+#contact textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+#contact input::placeholder,
+#contact textarea::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+#contact input:focus,
+#contact textarea:focus {
+  border-color: #38bdf8;
+  background: rgba(56, 189, 248, 0.08);
+}
+
+#contact form .btn {
+  margin-top: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+#contact-status {
+  min-height: 20px;
+  margin-top: 4px;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
 footer {
   text-align: center;
   padding: 30px;

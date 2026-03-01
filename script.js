@@ -31,3 +31,43 @@ if (menuToggle && navMenu) {
   });
 }
 
+const contactForm = document.getElementById('contact-form');
+const contactStatus = document.getElementById('contact-status');
+
+if (contactForm && contactStatus) {
+  contactForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(contactForm);
+    const payload = {
+      name: String(formData.get('name') || '').trim(),
+      email: String(formData.get('email') || '').trim(),
+      message: String(formData.get('message') || '').trim()
+    };
+
+    contactStatus.textContent = 'Sending...';
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      const data = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        contactStatus.textContent = data.error || 'Failed to send message.';
+        return;
+      }
+
+      contactStatus.textContent = 'Message sent successfully.';
+      contactForm.reset();
+    } catch (error) {
+      contactStatus.textContent = 'Network error. Please try again.';
+    }
+  });
+}
+
