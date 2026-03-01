@@ -57,7 +57,7 @@ async function handleContactRequest(req, res) {
   const smtpPort = Number(process.env.SMTP_PORT || 587);
   const smtpSecure = String(process.env.SMTP_SECURE || 'false').toLowerCase() === 'true';
   const smtpUser = process.env.SMTP_USER;
-  const smtpPass = process.env.SMTP_PASS;
+  const smtpPass = String(process.env.SMTP_PASS || '').replace(/\s+/g, '');
   const contactTo = process.env.CONTACT_TO || 'pesheva@gmail.com';
   const contactFrom = process.env.CONTACT_FROM || smtpUser;
 
@@ -126,7 +126,9 @@ async function handleContactRequest(req, res) {
 }
 
 const server = http.createServer((req, res) => {
-  if (req.method === 'POST' && req.url === '/api/contact') {
+  const requestPath = new URL(req.url, 'http://localhost').pathname;
+
+  if (req.method === 'POST' && requestPath.endsWith('/api/contact')) {
     handleContactRequest(req, res);
     return;
   }
@@ -136,7 +138,7 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  const urlPath = req.url === '/' ? '/index.html' : req.url;
+  const urlPath = requestPath === '/' ? '/index.html' : requestPath;
   const safePath = path.normalize(decodeURIComponent(urlPath)).replace(/^([.][.][/\\])+/, '');
   const filePath = path.join(__dirname, safePath);
 

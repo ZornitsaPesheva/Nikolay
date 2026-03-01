@@ -48,7 +48,8 @@ if (contactForm && contactStatus) {
     contactStatus.textContent = 'Sending...';
 
     try {
-      const response = await fetch('/api/contact', {
+      const apiUrl = new URL('api/contact', window.location.href);
+      const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
