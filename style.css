@@ -91,7 +91,7 @@ nav a:hover {
   align-items: center;
   text-align: center;
   padding: 0 10%;
-  background: url("nedev.png") center/cover no-repeat;
+  background: url("content/nedev.png") center/cover no-repeat;
   position: relative;
 }
 
